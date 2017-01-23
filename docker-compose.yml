@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+  mongo:
+    image: "mongo:3.2.11"
+    volumes:
+      - mongo-data:/data/db  
+  web:
+    image: "openhas/server"
+    ports:
+      - "3000:3000"
+    links:
+      - mongo:database
+
+volumes:
+  mongo-data:
